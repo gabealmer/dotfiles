@@ -1,0 +1,13 @@
+.DS_Store
+.svn
+*~
+.*.swp
+
+#Java.gitignore
+*.class
+
+*.war
+*.ear
+
+#Maven.gitignore
+target/
