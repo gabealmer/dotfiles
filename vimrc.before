@@ -1,0 +1,6 @@
+let mapleader = ","
+
+" Fonts
+set guifont=Inconsolata:h13
+set antialias
+
