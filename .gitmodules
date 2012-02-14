@@ -1,3 +1,6 @@
 [submodule "janus/java-getset"]
 	path = janus/java-getset
 	url = https://github.com/vim-scripts/java_getset.vim.git
+[submodule "janus/javacomplete"]
+	path = janus/javacomplete
+	url = https://github.com/vim-scripts/javacomplete.git
