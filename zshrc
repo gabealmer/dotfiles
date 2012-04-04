@@ -1,3 +1,4 @@
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -35,4 +36,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
