@@ -1,4 +1,7 @@
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export LANG=hu_HU.UTF-8
+export LC_CTYPE=hu_HU.UTF-8
+export LC_ALL=hu_HU.UTF-8
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
