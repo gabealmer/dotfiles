@@ -16,6 +16,9 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="/usr/local/Cellar/macvim/7.3-63/MacVim.app/Contents/MacOS/Vim"
 
+#include custom completions
+fpath=(.zsh-completions $fpath)
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -45,3 +48,4 @@ source $ZSH/oh-my-zsh.sh
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 export EDITOR=vim
+export NODE_PATH=/usr/local/lib/node_modules
