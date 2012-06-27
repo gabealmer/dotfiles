@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:$HOME/.rvm/bin:$PATH"
 export LANG=hu_HU.UTF-8
 export LC_CTYPE=hu_HU.UTF-8
 export LC_ALL=hu_HU.UTF-8
