@@ -7,3 +7,6 @@
 [submodule "janus/vim-ragtag"]
 	path = janus/vim-ragtag
 	url = git://github.com/tpope/vim-ragtag.git
+[submodule "janus/tabular"]
+	path = janus/tabular
+	url = git://github.com/godlygeek/tabular.git
