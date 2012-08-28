@@ -4,3 +4,4 @@ let mapleader = ","
 set guifont=Inconsolata:h13
 set antialias
 
+set cursorline
