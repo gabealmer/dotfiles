@@ -9,6 +9,7 @@ syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 
 execute pathogen#infect()
+execute pathogen#infect('bundle/{}', 'colorse/{}')
 syntax on
 filetype plugin indent on
 
