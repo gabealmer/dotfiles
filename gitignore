@@ -1,7 +1,6 @@
 .DS_Store
 .svn
 *~
-.*.swp
 
 #Java.gitignore
 *.class
@@ -11,3 +10,9 @@
 
 #Maven.gitignore
 target/
+
+*.log
+*.sqlite3
+.ruby-gemset
+*.swp
+*.swo
