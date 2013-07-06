@@ -7,3 +7,15 @@
 [submodule "vim/colors/molokai"]
   path = vim/colors/molokai
   url = git@github.com:tomasr/molokai.git
+[submodule "vim/bundle/ack.vim"]
+  path = vim/bundle/ack.vim
+  url = git@github.com:mileszs/ack.vim.git
+[submodule "vim/bundle/ctrlp.vim"]
+  path = vim/bundle/ctrlp.vim
+  url = git@github.com:kien/ctrlp.vim.git
+[submodule "vim/bundle/nerdtree"]
+  path = vim/bundle/nerdtree
+  url = git@github.com:scrooloose/nerdtree.git
+[submodule "vim/bundle/vim-ruby"]
+  path = vim/bundle/vim-ruby
+  url = git@github.com:vim-ruby/vim-ruby.git
