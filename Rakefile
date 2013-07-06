@@ -58,6 +58,8 @@ task :install do
       link_file(file)
     end
   end
+
+  system %Q{mkdir ~/.vim/{_backup,_temp}}
 end
 
 def replace_file(file)
