@@ -59,7 +59,7 @@ task :install do
     end
   end
 
-  system %Q{mkdir ~/.vim/{_backup,_temp}}
+  system %Q{mkdir -p ~/.vim/{_backup,_temp}}
 end
 
 def replace_file(file)
