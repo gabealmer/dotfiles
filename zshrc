@@ -10,6 +10,8 @@ ZSH_THEME="robbyrussell"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ctags="`brew --prefix`/bin/ctags"
+
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 # Set to this to use case-sensitive completion
