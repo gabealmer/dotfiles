@@ -11,6 +11,7 @@ ZSH_THEME="robbyrussell"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ctags="`brew --prefix`/bin/ctags"
+alias ackr="ack --type=ruby"
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
