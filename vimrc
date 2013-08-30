@@ -31,3 +31,7 @@ set list                          " Show invisible characters
 
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
+
+if has('clipboard')
+  set clipboard=unnamed
+endif
