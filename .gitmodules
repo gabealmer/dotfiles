@@ -62,5 +62,8 @@
   path = vim/bundle/vim-coffee-script
   url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/bundle/matchit"]
-	path = vim/bundle/matchit
+  path = vim/bundle/matchit
   url = https://github.com/vim-scripts/matchit.zip
+[submodule "vim/bundle/vim-gitgutter"]
+  path = vim/bundle/vim-gitgutter
+  url = https://github.com/airblade/vim-gitgutter.git
