@@ -48,6 +48,8 @@ plugins=(git brew rvm bundler gem hub rake postgres heroku)
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/local/bin/aws_zsh_completer.sh
+
 # Customize to your needs...
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
