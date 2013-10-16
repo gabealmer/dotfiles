@@ -72,7 +72,7 @@
 --type-add=python:ext:py
 --type-add=python:firstlinematch:/^#!.*\bpython/
 --type-add=rr:ext:R
---type-add=ruby:ext:rb,rhtml,rjs,rxml,erb,rake,spec
+--type-add=ruby:ext:rb,rhtml,rjs,rxml,erb,rake,spec,feature
 --type-add=ruby:is:Rakefile
 --type-add=ruby:firstlinematch:/^#!.*\bruby/
 --type-add=rust:ext:rs
