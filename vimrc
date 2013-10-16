@@ -35,3 +35,11 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 if has('clipboard')
   set clipboard=unnamed
 endif
+
+" treat all numbers as decimals
+set nrformats=
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
