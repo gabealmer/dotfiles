@@ -13,13 +13,13 @@ syntax on
 filetype plugin indent on
 
 " Color
-color molokai
+"color molokai
+set background=dark
+colorscheme solarized
 
 " Fonts
 set guifont=Inconsolata:h13
 set antialias
-
-let mapleader = ","
 
 map <Leader>n :NERDTreeToggle<CR>
 
