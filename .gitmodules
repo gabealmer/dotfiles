@@ -77,5 +77,8 @@
   path = vim/bundle/vim-surround
   url = https://github.com/tpope/vim-surround.git
 [submodule "vim/colors/vim-colors-solarized"]
-	path = vim/colors/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+  path = vim/colors/vim-colors-solarized
+  url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/vim-repeat"]
+  path = vim/bundle/vim-repeat
+  url = https://github.com/tpope/vim-repeat.git
