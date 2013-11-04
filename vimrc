@@ -43,3 +43,7 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+set hlsearch    " highlight matches
+set incsearch   " incremental searching
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
