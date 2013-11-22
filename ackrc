@@ -47,7 +47,7 @@
 --type-add=hh:ext:h
 --type-add=cpp:ext:cpp,cc,cxx,m,hpp,hh,h,hxx
 --type-add=csharp:ext:cs
---type-add=css:ext:css
+--type-add=css:ext:css,scss
 --type-add=delphi:ext:pas,int,dfm,nfm,dof,dpk,dproj,groupproj,bdsgroup,bdsproj
 --type-add=elisp:ext:el
 --type-add=erlang:ext:erl,hrl
