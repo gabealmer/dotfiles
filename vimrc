@@ -18,7 +18,7 @@ set background=dark
 colorscheme solarized
 
 " Fonts
-set guifont=Inconsolata:h13
+set guifont=Inconsolata+for+Powerline:h13
 set antialias
 
 map <Leader>n :NERDTreeToggle<CR>
