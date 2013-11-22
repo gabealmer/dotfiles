@@ -18,7 +18,7 @@ set background=dark
 colorscheme solarized
 
 " Fonts
-set guifont=Inconsolata+for+Powerline:h13
+set guifont=Inconsolata\ for\ Powerline:h14
 set antialias
 
 map <Leader>n :NERDTreeToggle<CR>
@@ -49,3 +49,6 @@ set incsearch   " incremental searching
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 nnoremap <f5> :!ctags -R<CR>
+
+" Use powerline pathced fonts
+let g:airline_powerline_fonts = 1
