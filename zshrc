@@ -12,6 +12,7 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ctags="`brew --prefix`/bin/ctags"
 alias ackr="ack --type=ruby"
+alias cdp="cd ~/work/projects/pro/proweb"
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
@@ -45,7 +46,7 @@ bindkey \^U backward-kill-line
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm bundler gem hub rake postgres heroku)
+plugins=(git brew rvm bundler gem hub rake postgres heroku rails3)
 
 source $ZSH/oh-my-zsh.sh
 
