@@ -66,3 +66,14 @@ if executable('ag')
 endif
 
 nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" changes the cursor shape/color in console
+" " in the terminal depending on the mode
+if &term =~ "xterm\\|rxvt"
+  " use a | cursor in insert mode
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+
+  " use a rectangle cursor otherwise
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  autocmd VimLeave * silent !echo -ne "\<Esc>]50;CursorShape=0\x7"
+endif
