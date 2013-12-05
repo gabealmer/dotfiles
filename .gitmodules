@@ -88,3 +88,6 @@
 [submodule "vim/bundle/ag.vim"]
   path = vim/bundle/ag.vim
   url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/ZoomWin.git"]
+	path = vim/bundle/ZoomWin.git
+	url = https://github.com/regedarek/ZoomWin.git
