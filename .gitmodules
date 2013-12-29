@@ -89,5 +89,8 @@
   path = vim/bundle/ag.vim
   url = https://github.com/rking/ag.vim
 [submodule "vim/bundle/ZoomWin.git"]
-	path = vim/bundle/ZoomWin.git
-	url = https://github.com/regedarek/ZoomWin.git
+  path = vim/bundle/ZoomWin.git
+  url = https://github.com/regedarek/ZoomWin.git
+[submodule "vim/bundle/vim-vinegar"]
+  path = vim/bundle/vim-vinegar
+  url = https://github.com/tpope/vim-vinegar.git
