@@ -21,8 +21,6 @@ colorscheme solarized
 set guifont=Inconsolata\ for\ Powerline:h14
 set antialias
 
-map <Leader>n :NERDTreeToggle<CR>
-
 set nowrap                        " don't wrap lines
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
