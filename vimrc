@@ -43,6 +43,7 @@ Bundle 'bling/vim-airline'
 Bundle 'rking/ag.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'tpope/vim-vinegar'
+Bundle 'szw/vim-ctrlspace'
 
 
 " execute pathogen#infect()
@@ -89,6 +90,9 @@ nnoremap <f5> :!ctags -R<CR>
 " Use powerline pathced fonts
 let g:airline_powerline_fonts = 1
 
+"vim-ctrlspace
+let g:airline_exclude_preview = 1
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -113,3 +117,8 @@ if &term =~ "xterm\\|rxvt"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   autocmd VimLeave * silent !echo -ne "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" Highlight lines larger than 120 characters
+" Only the 120th char
+highlight rightMargin term=bold ctermfg=red guifg=red guibg=yellow
+match rightMargin /\%<122v.\%>121v/
