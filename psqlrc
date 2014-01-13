@@ -1,1 +1,20 @@
+\set QUIET 1
+
 \set PROMPT1 '%[%033[1;33;40m%]%M%@%/%R%[%033[0m%]%# '
+\timing
+
+-- By default, NULL displays as an empty space. Is it actually an empty
+-- string, or is it null? This makes that distinction visible.
+\pset null [null]
+
+\set VERBOSITY verbose
+
+-- If a command is run more than once in a row, only store it once in the
+-- history.
+\set HISTCONTROL ignoredups
+
+-- Autocomplete keywords (like SELECT) in upper-case, even if you started
+-- typing them in lower case.
+\set COMP_KEYWORD_CASE upper
+
+\unset QUIET
