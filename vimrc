@@ -7,8 +7,46 @@ set cursorline        " Show the current line
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 
-execute pathogen#infect()
-execute pathogen#infect('bundle/{}', 'colors/{}')
+
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tomasr/molokai'
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-sensible'
+Bundle 'ervandew/supertab'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rails'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-fugitive'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'kana/vim-textobj-entire'
+Bundle 'vim-scripts/textobj-user'
+Bundle 'tpope/vim-surround'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-repeat'
+Bundle 'bling/vim-airline'
+Bundle 'rking/ag.vim'
+Bundle 'regedarek/ZoomWin'
+Bundle 'tpope/vim-vinegar'
+
+
+" execute pathogen#infect()
+" execute pathogen#infect('bundle/{}', 'colors/{}')
 syntax on
 filetype plugin indent on
 
