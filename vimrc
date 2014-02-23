@@ -122,3 +122,7 @@ endif
 " Only the 120th char
 highlight rightMargin term=bold ctermfg=red guifg=red guibg=yellow
 match rightMargin /\%<122v.\%>121v/
+
+" Offer a choice of tags when several match, jump directly if there is only
+" one match.
+noremap <C-]> g<C-]>
