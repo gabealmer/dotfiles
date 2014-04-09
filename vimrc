@@ -44,6 +44,7 @@ Bundle 'rking/ag.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'tpope/vim-vinegar'
 Bundle 'szw/vim-ctrlspace'
+Bundle 'scrooloose/syntastic'
 
 
 " execute pathogen#infect()
@@ -53,7 +54,7 @@ filetype plugin indent on
 
 " Color
 "color molokai
-set background=dark
+set background=light
 colorscheme solarized
 
 " Fonts
