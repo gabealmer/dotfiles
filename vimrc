@@ -45,6 +45,10 @@ Bundle 'regedarek/ZoomWin'
 Bundle 'tpope/vim-vinegar'
 Bundle 'szw/vim-ctrlspace'
 Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'vim-scripts/HTML-AutoCloseTag'
+Bundle 'othree/html5.vim'
+Bundle 'wesQ3/vim-windowswap'
 
 
 " execute pathogen#infect()
@@ -127,3 +131,6 @@ match rightMargin /\%<122v.\%>121v/
 " Offer a choice of tags when several match, jump directly if there is only
 " one match.
 noremap <C-]> g<C-]>
+
+cnoreabbrev FHL Tabularize /:\zs/l1c0l0
+cnoreabbrev FSHL Tabularize /=>/l1c1l0
