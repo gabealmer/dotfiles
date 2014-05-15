@@ -19,3 +19,10 @@
   pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [hub]
   host = <%= print("Hub hostname: "); STDOUT.flush; STDIN.gets.chomp %>
+[push]
+  default = simple
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
