@@ -13,6 +13,7 @@ ZSH_THEME="robbyrussell"
 alias ctags="`brew --prefix`/bin/ctags"
 alias ackr="ack --type=ruby"
 alias cdp="cd ~/work/projects/pro/proweb"
+alias cda="cd ~/work/projects/apis"
 gap() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git add }
 gdp() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git diff }
 alias rvmgd='cd $(rvm gemdir)/gems'
@@ -49,13 +50,13 @@ bindkey \^U backward-kill-line
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm bundler gem hub rake postgres heroku rails)
+plugins=(git brew rvm bundler gem hub rake postgres heroku rails knife)
 
 source $ZSH/oh-my-zsh.sh
 
 source /usr/local/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
