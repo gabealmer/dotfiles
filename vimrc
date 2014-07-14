@@ -49,6 +49,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'othree/html5.vim'
 Bundle 'wesQ3/vim-windowswap'
+Bundle 'vimwiki/vimwiki'
+Bundle 'munen/find_yaml_key'
 
 
 " execute pathogen#infect()
@@ -134,3 +136,5 @@ noremap <C-]> g<C-]>
 
 cnoreabbrev FHL Tabularize /:\zs/l1c0l0
 cnoreabbrev FSHL Tabularize /=>/l1c1l0
+
+let g:vimwiki_list = [{'path':'~/.notes'}]
