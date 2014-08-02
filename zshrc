@@ -67,5 +67,6 @@ source /usr/local/bin/aws_zsh_completer.sh
 PATH=$PATH:$HOME/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
+export BUNDLER_EDITOR=mvim
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
