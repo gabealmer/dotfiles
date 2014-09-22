@@ -4,7 +4,6 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set cursorline        " Show the current line
-syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 
 
@@ -51,11 +50,11 @@ Bundle 'othree/html5.vim'
 Bundle 'wesQ3/vim-windowswap'
 Bundle 'vimwiki/vimwiki'
 Bundle 'munen/find_yaml_key'
-
+Bundle 'slim-template/vim-slim.git'
 
 " execute pathogen#infect()
 " execute pathogen#infect('bundle/{}', 'colors/{}')
-syntax on
+syntax enable         " Turn on syntax highlighting allowing local overrides
 filetype plugin indent on
 
 " Color
@@ -136,5 +135,6 @@ noremap <C-]> g<C-]>
 
 cnoreabbrev FHL Tabularize /:\zs/l1c0l0
 cnoreabbrev FSHL Tabularize /=>/l1c1l0
+cnoreabbrev FWHL Tabularize / /l1c1l0
 
 let g:vimwiki_list = [{'path':'~/.notes'}]
