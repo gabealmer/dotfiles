@@ -2,3 +2,4 @@
 _temp
 _backup
 vim/bundle/*
+.private

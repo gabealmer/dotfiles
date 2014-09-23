@@ -12,18 +12,9 @@ ZSH_THEME="gabealmer"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ctags="`brew --prefix`/bin/ctags"
-alias ackr="ack --type=ruby"
-alias cdpw="cd ~/work/projects/pro/proweb"
-alias cdp="cd ~/work/projects/pro"
-alias cda="cd ~/work/projects/apis"
-alias cdd="cd ~/work/projects/Development"
-alias cdc="cd ~/work/projects/cookbooks"
-alias gca="git commit --amend"
-gap() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git add }
-gdp() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git diff }
-alias rvmgd='cd $(rvm gemdir)/gems'
-sknife() { knife ssh $@ -x chefrun }
+# Aliases
+[[ -s ~/.dotfiles/aliases/.aliases ]] && source ~/.dotfiles/aliases/.aliases
+[[ -s ~/.dotfiles/aliases/.private ]] && source ~/.dotfiles/aliases/.private
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
@@ -61,7 +52,7 @@ plugins=(git brew rvm bundler gem hub rake postgres heroku rails knife vagrant t
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/bin/aws_zsh_completer.sh
+source /usr/local/aws/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
 PATH=$PATH:$HOME/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
