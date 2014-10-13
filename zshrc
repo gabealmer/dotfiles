@@ -48,7 +48,7 @@ bindkey \^U backward-kill-line
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm bundler gem hub rake postgres heroku rails knife vagrant thor kitchen)
+plugins=(git brew rvm bundler gem hub rake postgres heroku rails knife vagrant thor kitchen gradle)
 
 source $ZSH/oh-my-zsh.sh
 
