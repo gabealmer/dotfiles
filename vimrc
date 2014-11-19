@@ -92,6 +92,7 @@ set incsearch   " incremental searching
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 nnoremap <f5> :!ctags -R<CR>
+nnoremap <silent> <f6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Use powerline pathced fonts
 let g:airline_powerline_fonts = 1
