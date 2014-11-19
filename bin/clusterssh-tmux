@@ -1,0 +1,28 @@
+#!/bin/bash
+# Thanks David Sitte
+# Usage clusterssh-tmux mysvc{0,1,2,3}.server.com
+
+if [ -z "$*" ]; then
+  echo "Usage: `basename $0` hostname ..." >&2
+  exit -1;
+fi
+
+# check if we are inside tmux
+if [ -z "$TMUX" ]; then
+  exec tmux -2 -u new-session "exec $0 $*"
+fi
+
+FIRST=
+for IP in $* ; do
+  CMD="exec ssh $IP"
+  if [ -z "$FIRST" ]; then
+    NAME=`echo "$1" | cut -d. -for1`"..."
+    tmux new-window -n "clusterssh $NAME" "$CMD"
+    FIRST='done'
+  else
+    tmux split-window -v "$CMD"
+  fi
+  tmux select-layout tiled
+done
+
+tmux set-window-option synchronize-panes on
