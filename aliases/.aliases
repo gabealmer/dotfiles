@@ -5,3 +5,5 @@ gap() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git add }
 gdp() { git ls-files -o -m --exclude-standard |grep "$@" | xargs git diff }
 alias rvmgd='cd $(rvm gemdir)/gems'
 sknife() { knife ssh $@ -x chefrun }
+alias vim='mvim -v'
+alias view='mview -v'
