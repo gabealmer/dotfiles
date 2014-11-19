@@ -55,7 +55,7 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/aws/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
-PATH=$PATH:$HOME/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
 export BUNDLER_EDITOR=mvim
