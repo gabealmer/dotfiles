@@ -51,6 +51,8 @@ Bundle 'wesQ3/vim-windowswap'
 Bundle 'vimwiki/vimwiki'
 Bundle 'munen/find_yaml_key'
 Bundle 'slim-template/vim-slim.git'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'ecomba/vim-ruby-refactoring'
 
 " execute pathogen#infect()
 " execute pathogen#infect('bundle/{}', 'colors/{}')
@@ -138,3 +140,7 @@ cnoreabbrev FSHL Tabularize /=>/l1c1l0
 cnoreabbrev FWHL Tabularize / /l1c1l0
 
 let g:vimwiki_list = [{'path':'~/.notes'}]
+
+" Configure browser for haskell_doc.vim
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
