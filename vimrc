@@ -138,6 +138,8 @@ cnoreabbrev FHL Tabularize /:\zs/l1c0l0
 cnoreabbrev FSHL Tabularize /=>/l1c1l0
 cnoreabbrev FWHL Tabularize / /l1c1l0
 
+cnoreabbrev AG Ag
+
 let g:vimwiki_list = [{'path':'~/.notes'}]
 
 " Configure browser for haskell_doc.vim
