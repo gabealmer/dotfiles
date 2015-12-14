@@ -33,7 +33,7 @@ task :install do
 
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile README.md LICENSE rvm].include? file
+    next if %w[Rakefile install.sh Brewfile README.md LICENSE aliases bin colors zsh_custom].include? file
 
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -60,7 +60,7 @@ task :install do
   end
 
   system %Q{mkdir -p ~/.vim/{_backup,_temp}}
-  system %Q{cp rvm/gemsets/global.gems ~/.rvm/gemsets/global.gems}
+  system %Q{ln -s "$PWD/bin" "$HOME/bin}
 end
 
 def replace_file(file)
