@@ -42,17 +42,20 @@ Bundle 'bling/vim-airline'
 Bundle 'rking/ag.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'tpope/vim-vinegar'
-Bundle 'szw/vim-ctrlspace'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'othree/html5.vim'
 Bundle 'wesQ3/vim-windowswap'
-Bundle 'vimwiki/vimwiki'
-Bundle 'munen/find_yaml_key'
+" Bundle 'vimwiki/vimwiki'
+" Bundle 'munen/find_yaml_key'
 Bundle 'slim-template/vim-slim.git'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 't9md/vim-chef'
+Bundle 'lervag/vimtex'
 
 " execute pathogen#infect()
 " execute pathogen#infect('bundle/{}', 'colors/{}')
@@ -61,7 +64,7 @@ filetype plugin indent on
 
 " Color
 "color molokai
-set background=light
+set background=dark
 colorscheme solarized
 
 " Fonts
@@ -124,6 +127,15 @@ if &term =~ "xterm\\|rxvt"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   autocmd VimLeave * silent !echo -ne "\<Esc>]50;CursorShape=0\x7"
 endif
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+end
 
 " Highlight lines larger than 120 characters
 " Only the 120th char
@@ -132,7 +144,7 @@ match rightMargin /\%<122v.\%>121v/
 
 " Offer a choice of tags when several match, jump directly if there is only
 " one match.
-noremap <C-]> g<C-]>
+" noremap <C-]> g<C-]>
 
 cnoreabbrev FHL Tabularize /:\zs/l1c0l0
 cnoreabbrev FSHL Tabularize /=>/l1c1l0
@@ -145,3 +157,17 @@ let g:vimwiki_list = [{'path':'~/.notes'}]
 " Configure browser for haskell_doc.vim
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
+
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_checkers = ['mri']
+
+" Rspec mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
