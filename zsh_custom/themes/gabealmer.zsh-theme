@@ -1,5 +1,5 @@
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%1/ %{$fg[magenta]%}[$(~/.rvm/bin/rvm-prompt v g)]%{$reset_color%} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%1/ %{$fg[magenta]%}[$(rbenv version)]%{$reset_color%} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
