@@ -60,7 +60,7 @@ task :install do
   end
 
   system %Q{mkdir -p ~/.vim/{_backup,_temp}}
-  system %Q{ln -s "$PWD/bin" "$HOME/bin}
+  system %Q{ln -s "$PWD/bin" "$HOME/bin"}
 end
 
 def replace_file(file)
