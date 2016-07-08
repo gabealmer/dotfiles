@@ -1,0 +1,19 @@
+# MS Word documents
+application/msword; ~/bin/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+#
+# # Images
+image/jpg; ~/bin/view_attachment.sh %s jpg
+image/jpeg; ~/bin/view_attachment.sh %s jpg
+image/pjpeg; ~/bin/view_attachment.sh %s jpg
+image/png; ~/bin/view_attachment.sh %s png
+image/gif; ~/bin/view_attachment.sh %s gif
+#
+# # PDFs
+application/pdf; ~/bin/view_attachment.sh %s pdf
+
+#
+# # HTML
+text/html; ~/bin/view_attachment.sh %s html; copiousoutput
+#
+# # Unidentified files
+application/octet-stream; ~/bin/view_attachment.sh %s "-"
