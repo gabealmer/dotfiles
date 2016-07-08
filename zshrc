@@ -17,6 +17,7 @@ ZSH_THEME="gabealmer"
 [[ -s ~/.dotfiles/aliases/.private ]] && source ~/.dotfiles/aliases/.private
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -52,7 +53,7 @@ plugins=(git brew bundler gem hub rake postgres heroku rails knife vagrant thor 
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/aws/bin/aws_zsh_completer.sh
+source /usr/local/share/zsh/site-functions/_aws
 
 # Customize to your needs...
 PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin
@@ -63,3 +64,10 @@ export BUNDLER_EDITOR=vim
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . `brew --prefix`/etc/profile.d/z.sh
+
+eval "$(rbenv init -)"
+
+export GPGKEY=4FB8C14B
+
+# export CC=gcc
+# export CXX=g++
