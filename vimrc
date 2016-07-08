@@ -6,56 +6,75 @@ set number            " Show line numbers
 set cursorline        " Show the current line
 set encoding=utf-8    " Set default encoding to UTF-8
 
+set nobackup
+set nowritebackup
+" set noswapfile
+" set backupdir^=~/.vim/_backup//    " where to put backup files.
+set directory^=~/.vim/_temp//      " where to put swap files.
 
+set ignorecase
+set smartcase
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set autoread
 
-Bundle 'gmarik/vundle'
+" set shortmess+=I
 
-Bundle 'tomasr/molokai'
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-sensible'
-Bundle 'ervandew/supertab'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rails'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'kana/vim-textobj-entire'
-Bundle 'vim-scripts/textobj-user'
-Bundle 'tpope/vim-surround'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-repeat'
-Bundle 'bling/vim-airline'
-Bundle 'rking/ag.vim'
-Bundle 'regedarek/ZoomWin'
-Bundle 'tpope/vim-vinegar'
-Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
-Bundle 'vim-scripts/HTML-AutoCloseTag'
-Bundle 'othree/html5.vim'
-Bundle 'wesQ3/vim-windowswap'
+let mapleader = '\'
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-sensible'
+" Plugin 'ervandew/supertab'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tpope/vim-endwise'
+" Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+" Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'vim-scripts/textobj-user'
+Plugin 'tpope/vim-surround'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-repeat'
+Plugin 'bling/vim-airline'
+Plugin 'rking/ag.vim'
+" Plugin 'regedarek/ZoomWin'
+Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'othree/html5.vim'
+" Plugin 'wesQ3/vim-windowswap'
 " Bundle 'vimwiki/vimwiki'
 " Bundle 'munen/find_yaml_key'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 't9md/vim-chef'
-Bundle 'lervag/vimtex'
+Plugin 'slim-template/vim-slim.git'
+" Plugin 'lukerandall/haskellmode-vim'
+" Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 't9md/vim-chef'
+" Plugin 'lervag/vimtex'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'jgdavey/vim-blockle'
+Plugin 'tpope/vim-abolish'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+call vundle#end()
 
 " execute pathogen#infect()
 " execute pathogen#infect('bundle/{}', 'colors/{}')
@@ -77,9 +96,6 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 
-set backupdir^=~/.vim/_backup//    " where to put backup files.
-set directory^=~/.vim/_temp//      " where to put swap files.
-
 set clipboard+=unnamed
 
 " treat all numbers as decimals
@@ -94,7 +110,7 @@ set hlsearch    " highlight matches
 set incsearch   " incremental searching
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-nnoremap <f5> :!ctags -R<CR>
+nnoremap <f5> :!ctags -R --languages=ruby --exclude=.git --exclude=log<CR>
 nnoremap <silent> <f6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Use powerline pathced fonts
@@ -144,7 +160,7 @@ match rightMargin /\%<122v.\%>121v/
 
 " Offer a choice of tags when several match, jump directly if there is only
 " one match.
-" noremap <C-]> g<C-]>
+noremap <C-]> g<C-]>
 
 cnoreabbrev FHL Tabularize /:\zs/l1c0l0
 cnoreabbrev FSHL Tabularize /=>/l1c1l0
@@ -167,7 +183,11 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
+
+
+let g:vimrubocop_config = '~/projects/.rubocop.yml'
+let g:jsx_ext_required = 0
