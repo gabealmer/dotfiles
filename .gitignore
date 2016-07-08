@@ -3,3 +3,5 @@ _temp
 _backup
 vim/bundle/*
 .private
+/rbenv/shims/
+/bundle/cache/
