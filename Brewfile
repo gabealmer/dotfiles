@@ -16,7 +16,7 @@ brew 'macvim'
 brew 'mutt'
 brew 'node'
 brew 'openssl'
-brew 'postgresql' --with-pyton
+brew 'postgresql', args: ['with-python']
 brew 'phantomjs'
 brew 'sqlite'
 brew 'ssh-copy-id'
