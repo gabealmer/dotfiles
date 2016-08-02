@@ -6,12 +6,20 @@ Installation
 
     git clone git@github.com:almergabor/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles/
+    brew bundle
     rake install
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim /etc/shells
+    chsh -s /usr/local/bin/zsh
+    ./install_font.sh
+    setup iTerm (font, color scheme)
+    start hammerspoon, bowtie, clipmenu, docker
+    configure Seil (https://mutelight.org/caps-lock)
 
 Environment
 -----------
 
-I am running on Mac OS X, currently 10.6 Snow Leopard, using bash as my
+I am running on Mac OS X, currently 10.11 El Capitan, using zsh as my
 shell.
 
 Credits
