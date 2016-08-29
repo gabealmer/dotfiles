@@ -6,6 +6,7 @@
   b = branch
   personalprofile = config user.email \"<%= print("Your Personal Email: "); STDOUT.flush; STDIN.gets.chomp %>\"
   bitbuckerprofile = config user.email \"<%= print("Your Bitbucket Email: "); STDOUT.flush; STDIN.gets.chomp %>\"
+  unlock = crypt unlock ~/.git-crypt-key
 [color]
   ui = true
   diff = auto
