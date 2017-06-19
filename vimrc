@@ -65,14 +65,16 @@ Plugin 'slim-template/vim-slim.git'
 " Plugin 'lukerandall/haskellmode-vim'
 " Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 Plugin 't9md/vim-chef'
-" Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'jgdavey/vim-blockle'
 Plugin 'tpope/vim-abolish'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'chriskempson/base16-vim'
+Plugin 'gorodinskiy/vim-coloresque'
 
 call vundle#end()
 
@@ -83,8 +85,12 @@ filetype plugin indent on
 
 " Color
 "color molokai
-set background=dark
-colorscheme solarized
+" set background=dark
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" let g:solarized_termcolors=16
+" colorscheme solarized
+colorscheme base16-default-dark
 
 " Fonts
 set guifont=Inconsolata\ for\ Powerline:h14
