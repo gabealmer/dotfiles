@@ -69,6 +69,10 @@ eval "$(rbenv init -)"
 
 export GPGKEY=4FB8C14B
 
+# export SSL_CERT_FILE=/usr/local/etc/openssl/WhitepagesCARoot.pem
+export CURL_CA_BUNDLE=~/.ssh/cacert.pem
+# export CURL_CA_BUNDLE=/usr/local/etc/openssl/cert.pem
+
 # export CC=gcc
 # export CXX=g++
 eval "$(pyenv init -)"
