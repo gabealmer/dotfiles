@@ -5,3 +5,6 @@ vim/bundle/*
 .private
 /rbenv/shims/
 /bundle/cache/
+/emacs.d/elpa
+/emacs.d/recentf
+/emacs.d/projectile-bookmarks.eld
