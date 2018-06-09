@@ -56,19 +56,19 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", function()
   win:maximize()
 end)
 
-hs.hotkey.bind({"cmd"}, "J", function()
-  local app = hs.application.frontmostApplication()
-  if app:name() == "Mail" then
-    hs.eventtap.keyStroke({}, "down")
-  end
-end)
+-- hs.hotkey.bind({"cmd"}, "J", function()
+--   local app = hs.application.frontmostApplication()
+--   if app:name() == "Mail" then
+--     hs.eventtap.keyStroke({}, "down")
+--   end
+-- end)
 
-hs.hotkey.bind({"cmd"}, "K", function()
-  local app = hs.application.frontmostApplication()
-  if app:name() == "Mail" then
-    hs.eventtap.keyStroke({}, "up")
-  end
-end)
+--hs.hotkey.bind({"cmd"}, "K", function()
+--  local app = hs.application.frontmostApplication()
+--  if app:name() == "Mail" then
+--    hs.eventtap.keyStroke({}, "up")
+--  end
+--end)
 
 local function appl(appName)
   return function()
@@ -76,10 +76,10 @@ local function appl(appName)
   end
 end
 
-hs.hotkey.bind(mash.focus, "H", appl("HipChat"))
-hs.hotkey.bind(mash.focus, "B", appl("Safari"))
-hs.hotkey.bind(mash.focus, "M", appl("Mail"))
-hs.hotkey.bind(mash.focus, "I", appl("iTerm"))
+-- hs.hotkey.bind(mash.focus, "H", appl("HipChat"))
+-- hs.hotkey.bind(mash.focus, "B", appl("Safari"))
+-- hs.hotkey.bind(mash.focus, "M", appl("Mail"))
+-- hs.hotkey.bind(mash.focus, "I", appl("iTerm"))
 
 -- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
 --   local win = hs.window.focusedWindow()

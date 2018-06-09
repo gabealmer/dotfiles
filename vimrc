@@ -48,7 +48,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'vim-scripts/textobj-user'
 Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-repeat'
 Plugin 'bling/vim-airline'
 Plugin 'rking/ag.vim'
@@ -75,6 +75,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chriskempson/base16-vim'
 Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'colepeters/spacemacs-theme.vim'
 
 call vundle#end()
 
@@ -90,10 +91,15 @@ filetype plugin indent on
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
 " colorscheme solarized
-colorscheme base16-default-dark
+" colorscheme base16-default-dark
+if (has("termguicolors"))
+  set termguicolors
+endif
+set background=dark
+colorscheme spacemacs-theme
 
 " Fonts
-set guifont=Inconsolata\ for\ Powerline:h14
+" set guifont=Inconsolata\ for\ Powerline:h14
 set antialias
 
 set nowrap                        " don't wrap lines

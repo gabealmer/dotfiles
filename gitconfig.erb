@@ -6,6 +6,7 @@
   b = branch
   personalprofile = config user.email \"<%= print("Your Personal Email: "); STDOUT.flush; STDIN.gets.chomp %>\"
   bitbuckerprofile = config user.email \"<%= print("Your Bitbucket Email: "); STDOUT.flush; STDIN.gets.chomp %>\"
+  crypt-merge = "! r() { return $1; }; for i in $1 $2 $3;do cat $i|git-crypt smudge > ${i}_;mv ${i}_ $i ;done;git merge-file -L yours -L ancestor -L theirs --marker-size $4 $1 $2 $3 ;RC=$? ;cat $1|git-crypt clean > ${1}_ ;mv ${1}_ $1 ;r $RC"
   unlock = crypt unlock ~/.git-crypt-key
 [color]
   ui = true
@@ -14,7 +15,7 @@
   branch = auto
 [core]
   excludesfile = <%= ENV['HOME'] %>/.gitignore
-  editor = vim
+  editor = emacsclient -t
   autocrlf = input
 [apply]
   whitespace = nowarn
@@ -27,9 +28,14 @@
 [merge]
   tool = vimdiff
   conflictstyle = diff3
+[merge "git-crypt"]
+  name = git-crypt merge
+  driver = git crypt-merge %A %O %B %L %P
 [mergetool]
   prompt = false
 [tig]
   tab-size = 4
   line-graphics = utf-8
   vertical-split = auto
+  [github "<%= print("Github Entrerprise hostname"); STDOUT.flush; STDIN.get.chomp %>"]
+  user = <%= print("Github Enterprise usename"); STDOUT.flush; STDIN.get.chomp %>

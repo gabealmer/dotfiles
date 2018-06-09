@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/share/zsh/site-functions/_aws
 
 # Customize to your needs...
-PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin
+PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin
 
 export EDITOR=vim
 export BUNDLER_EDITOR=vim
@@ -70,10 +70,12 @@ eval "$(rbenv init -)"
 export GPGKEY=4FB8C14B
 
 # export SSL_CERT_FILE=/usr/local/etc/openssl/WhitepagesCARoot.pem
-export CURL_CA_BUNDLE=~/.ssh/cacert.pem
+# export CURL_CA_BUNDLE=~/.ssh/cacert.pem
 # export CURL_CA_BUNDLE=/usr/local/etc/openssl/cert.pem
 
 # export CC=gcc
 # export CXX=g++
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+eval "$(jira --completion-script-zsh)"
