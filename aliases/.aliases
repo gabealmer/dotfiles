@@ -7,5 +7,5 @@ alias rvmgd='cd $(rvm gemdir)/gems'
 sknife() { knife ssh $@ -x chefrun }
 alias vim='mvim -v'
 alias view='mview -v'
-alias bundleinit='bundle install --path .bundle --binstubs .bundle/bin --jobs 4'
+alias bundleinit='bundle install --path bundle --binstubs bundle/bin --jobs 4'
 alias bowergem='rake app:bower:install:development'
