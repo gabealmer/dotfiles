@@ -8,4 +8,3 @@ BUNDLE_GEM__MIT: 'false'
 BUNDLE_GEM__TEST: 'false'
 BUNDLE_BUILD__NIO4R: "--with-cflags='-std=c99'"
 BUNDLE_BUILD__LIBV8: "--with-cxx=/usr/local/bin/g++-4.2"
-BUNDLE_BUILD__SASSC: "--with-cflags='-stg=c++0x'"
