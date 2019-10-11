@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; Always load newest byte code
 (setq load-prefer-newer t)
 
@@ -21,10 +23,10 @@
                          ("gnu"       . "https://elpa.gnu.org/packages/")
                          ("org"       . "http://orgmode.org/elpa/")))
 ;; (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-;                          ("gnu"       . "http://elpa.gnu.org/packages/")
-;                          ("melpa"     . "https://melpa.org/packages/")
-;                          ("marmalade" . "http://marmalade-repo.org/packages/")))
-(package-initialize)
+                                        ;                          ("gnu"       . "http://elpa.gnu.org/packages/")
+                                        ;                          ("melpa"     . "https://melpa.org/packages/")
+                                        ;                          ("marmalade" . "http://marmalade-repo.org/packages/")))
+(unless package--initialized (package-initialize t))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -34,7 +36,7 @@
 
 (set-frame-font "Source Code Pro 10")
 (add-to-list 'default-frame-alist
-             '(font . "Source Code Pro 10"))
+             '(font . "Source Code Pro 11"))
 
 ;; Auto refresh
 (global-auto-revert-mode 1)
@@ -42,6 +44,8 @@
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 (add-to-list 'global-auto-revert-ignore-modes 'Buffer-menu-mode)
+
+(setq org-replace-disputed-keys t)
 
 (use-package diminish :ensure t)
 
@@ -53,10 +57,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-; Disable ui stuff
-; disable scrollbar
+                                        ; Disable ui stuff
+                                        ; disable scrollbar
 (scroll-bar-mode -1)
-; disable toolbar
+                                        ; disable toolbar
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
@@ -75,7 +79,9 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;(show-paren-mode 1)
+ ;(show-paren-mode 1)
+(global-set-key (kbd "C-c N") 'make-frame)
+(global-set-key (kbd "C-x w") 'delete-frame)
 
 (use-package smartparens
   :ensure t
@@ -94,8 +100,8 @@
 (use-package volatile-highlights
   :ensure t
   :diminish ""
- :config
- (volatile-highlights-mode t))
+  :config
+  (volatile-highlights-mode t))
 
 (use-package spacemacs-theme
   :ensure t
@@ -140,7 +146,7 @@
         '((ivy-switch-buffer . ivy--regex-plus)
           (swiper . ivy--regex-plus)
           (counsel-M-x . ivy--regex-plus))))
-;          (t . ivy--regex-fuzzy))))
+                                        ;          (t . ivy--regex-fuzzy))))
 
 (use-package counsel
   :ensure t
@@ -152,6 +158,7 @@
    ("C-h v" . counsel-describe-variable))
   :config
   (setq ivy-initial-inputs-alist nil))
+  ;; (setq counsel-projectile-ag-extra-actions (("p" counsel-projectile-ag-action-switch-project "switch project")  ("j" counsel-projectile-action-other-window "other window"))))
 
 (use-package swiper
   :ensure t
@@ -168,6 +175,8 @@
 (use-package projectile
   :ensure t
   :diminish ""
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map))
   :config
   (progn
     (add-hook 'prog-mode-hook 'projectile-mode)
@@ -191,6 +200,10 @@
 (use-package cider
   :ensure t)
 
+(use-package go-mode
+  :ensure t
+  :mode "\\.go\\'")
+
 (use-package markdown-mode
   :ensure t
   :mode (("\\.markdown\\'" . gfm-mode) ("\\.md\\'" . gfm-mode)))
@@ -206,13 +219,18 @@
     (global-company-mode)
     (setq company-backends
           '(company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake company-capf company-files
-              (company-dabbrev-code company-gtags company-keywords)
-              company-oddmuse company-dabbrev))))
+                         (company-dabbrev-code company-gtags company-keywords)
+                         company-oddmuse company-dabbrev))))
 
 (use-package magit
   :ensure t
   :bind
-  (("C-x g" . magit-status)))
+  (("C-x g" . magit-status))
+  :config
+  (progn
+    (require 'git-commit)
+    (global-git-commit-mode t)
+    ))
 
 (use-package ghub
   :ensure t)
@@ -227,12 +245,12 @@
     (magithub-feature-autoinject t)
     (require 'magithub-issue-view)))
 
-(use-package ace-window
-  :ensure t
-  :bind*
-  ("M-p". ace-window)
-  :config
-  (setq aw-dispatch-always t))
+;; (use-package ace-window
+;;   :ensure t
+;;   :bind*
+;;   ("M-p". ace-window)
+;;   :config
+;;   (setq aw-dispatch-always t))
 
 (use-package winum
   :ensure t
@@ -255,6 +273,11 @@
     (windmove-default-keybindings)
     (setq windmove-wrap-around t)))
 
+;; (use-package framemove
+;;   :ensure t
+;;   :config
+;;   (framemove-default-keybindings))
+
 (use-package move-text
   :ensure t
   :config
@@ -268,6 +291,18 @@
    ("C-M-k" . crux-kill-whole-line)
    ("C-c I" . crux-find-user-init-file)
    ("C-c n" . crux-cleanup-buffer-or-region)))
+
+(use-package buffer-flip
+  :ensure t
+  :bind  (("M-<tab>" . buffer-flip)
+          :map buffer-flip-map
+          ( "M-<tab>" .   buffer-flip-forward)
+          ( "M-S-<tab>" . buffer-flip-backward)
+          ( "M-ESC" .     buffer-flip-abort))
+  :config
+  (setq buffer-flip-skip-patterns
+        '("^\\*helm\\b"
+          "^\\*swiper\\*$")))
 
 (use-package dired
   :config
@@ -300,13 +335,15 @@
     (spaceline-define-segment zoom-mode
       "Show if in Zoom mode."
       (when (fboundp 'zoom-window--enable-p)
-          (when (zoom-window--enable-p)
-            (propertize "Zoom" 'face '(:foreground "green" :weight bold)))))
+        (when (zoom-window--enable-p)
+          (propertize "Zoom" 'face '(:foreground "green" :weight bold)))))
     (spaceline-compile)
     (spaceline-emacs-theme 'zoom-mode)))
 
 (use-package ruby-tools
-  :ensure t)
+  :ensure t
+  :config
+  (setq ruby-insert-encoding-magic-comment nil))
 
 (use-package inf-ruby
   :ensure t)
@@ -315,6 +352,9 @@
   :ensure t
   ;; :init (setq rbenv-show-active-ruby-in-modeline nil)
   ;; :init (setq rbenv-installation-dir "/usr/local")
+  :init
+  (progn
+    (setq rbenv-modeline-function 'rbenv--modeline-plain))
   :config
   (progn
     (global-rbenv-mode)
@@ -354,6 +394,67 @@
   :config
   (setq js2-basic-offset 2))
 
+(use-package tern
+  :ensure t
+  :config
+  (add-hook 'js2-mode-hook 'tern-mode))
+
+(use-package company-tern
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tern))
+
+(use-package rjsx-mode
+  :ensure t
+  :mode "components\\/.*\\.js\\'")
+
+(use-package polymode
+  :ensure t
+  :after rjsx-mode
+  :config
+  (define-hostmode poly-rjsx-hostmode nil
+    "RJSX hostmode."
+    :mode 'rjsx-mode)
+  (define-innermode poly-rjsx-css-innermode nil
+    :mode 'css-mode
+    :head-matcher "css\`"
+    :tail-matcher "\`"
+    :head-mode 'host
+    :tail-mode 'host)
+  (define-polymode poly-rjsx-mode
+    :hostmode 'poly-rjsx-hostmode
+    :innermodes '(poly-rjsx-css-innermode))
+  (add-to-list 'auto-mode-alist '("components\\.jsx?\\'" . poly-rjsx-mode)))
+
+(use-package tide
+  :ensure t
+  :diminish t
+  :init
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    ;; company is an optional dependency. You have to
+    ;; install it separately via package-install
+    ;; `M-x package-install [ret] company`
+    (company-mode +1)
+    ;; aligns annotation to the right hand side
+    (setq company-tooltip-align-annotations t)))
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.tsx?\\'"
+  :init
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t
+        typescript-indent-level 2)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode))
+
 (use-package json-mode
   :ensure t
   :mode "\\.json\\'"
@@ -365,6 +466,7 @@
   :mode "\\.html\\'"
   :config
   (setq web-mode-enable-css-colorization t
+        web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2
         web-mode-markup-indent-offset 2))
 
@@ -372,6 +474,20 @@
   :ensure t
   :bind
   ("C-=" . er/expand-region))
+
+;; (use-package wrap-region
+;;   :ensure t
+;;   :config
+;;   (wrap-region-add-wrappers
+;;    '(("\ " "\ " nil ruby-mode)
+;;      ("*" "*" nil org-mode)
+;;      ("~" "~" nil org-mode)
+;;      ("/" "/" nil org-mode)
+;;      ("=" "=" "+" org-mode)
+;;      ("_" "_" nil org-mode)
+;;      ("$" "$" nil (org-mode latex-mode))))
+;;   (add-hook 'org-mode-hook 'wrap-region-mode)
+;;   (add-hook 'latex-mode-hook 'wrap-region-mode))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -410,7 +526,9 @@
 (use-package ggtags
   :ensure t
   :bind*
-  (("M-." . ggtags-find-tag-dwim)))
+  (("M-." . ggtags-find-tag-dwim))
+  :config
+  (setq gtags-path-style 'relative))
 
 (use-package org
   ;; :ensure org-plus-contrib
@@ -421,13 +539,23 @@
    ("C-c c" . org-capture)
    ("C-c b" . org-iswitchb))
   :config
-  (setq org-log-done t)
-  (setq org-directory "~/.org")
-  (setq org-default-notes-file (concat org-directory "/notes.org")))
+  (progn
+    (setq org-archive-location (concat "~/.org/archive/" (format-time-string "%Y") ".org::* " (format-time-string "%B")))
+    (setq org-pretty-entities t)
+    (setq org-log-done t)
+    (setq org-agenda-files (file-expand-wildcards "~/.org/wp/*.org"))
+    (setq org-directory "~/.org/wp")
+    (setq org-default-notes-file (concat org-directory "/notes.org"))
+    (setq org-capture-templates
+          '(("p" "Pro Task" entry (file+headline "~/.org/wp/pro_projects.org" "Daily tasks")
+             "** TODO %?\n  %i\n  %a\n\n"))
+          )))
 
 (use-package org-bullets
   :ensure t
   :init (add-hook 'org-mode-hook 'org-bullets-mode))
+
+(setq org-ellipsis "…")
 
 ;; Font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
@@ -449,11 +577,17 @@
     (setq-default TeX-master nil)))
 
 (use-package prettier-js
-  :ensure t)
+  :ensure t
+  :bind
+  ("C-c C-p" . prettier-js))
 
 (use-package feature-mode
   :ensure t
   :mode "\\.feature\\'")
+
+(use-package dockerfile-mode
+  :ensure t
+  :mode "Dockerfile\\'")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
