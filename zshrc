@@ -49,7 +49,7 @@ bindkey \^U backward-kill-line
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler gem hub rake postgres jsontools docker kubectl)
+plugins=(brew bundler gem github rake postgres jsontools docker kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,5 +80,9 @@ eval "$(pyenv virtualenv-init -)"
 
 eval "$(jira --completion-script-zsh)"
 
-# export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+export N_PREFIX=~
+export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+export LIBRARY_PATH=$LIBRARY_PATH:$(xcrun --show-sdk-path)/usr/include
 # export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home

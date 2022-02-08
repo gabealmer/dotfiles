@@ -13,20 +13,21 @@
 ;; each 50MB of allocated data (the default is on every 0.76MB)
 (setq gc-cons-threshold 50000000)
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+;; (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;; (load custom-file)
 
 (require 'package)
 
 (setq package-enable-at-startup nil)
-(setq package-archives '(("melpa"     . "https://melpa.org/packages/")
-                         ("gnu"       . "https://elpa.gnu.org/packages/")
+(setq package-archives '(("melpa"     . "http://melpa.org/packages/")
+                         ("gnu"       . "http://elpa.gnu.org/packages/")
                          ("org"       . "http://orgmode.org/elpa/")))
 ;; (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
                                         ;                          ("gnu"       . "http://elpa.gnu.org/packages/")
                                         ;                          ("melpa"     . "https://melpa.org/packages/")
                                         ;                          ("marmalade" . "http://marmalade-repo.org/packages/")))
-(unless package--initialized (package-initialize t))
+(package-initialize)
+;; (unless package--initialized (package-initialize t))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -34,9 +35,9 @@
 
 (require 'use-package)
 
-(set-frame-font "Source Code Pro 10")
+(set-frame-font "Source Code Pro 13")
 (add-to-list 'default-frame-alist
-             '(font . "Source Code Pro 11"))
+             '(font . "Source Code Pro 13"))
 
 ;; Auto refresh
 (global-auto-revert-mode 1)
@@ -86,6 +87,15 @@
 (use-package smartparens
   :ensure t
   :diminish (smartparens-mode . " ⓟ")
+  :bind*
+  (("C-M-a" . sp-beginning-of-sexp)
+   ("C-M-e" . sp-end-of-sexp)
+   ("C-<down>" . sp-down-sexp)
+   ("C-<up>" . sp-up-sexp)
+   ("C-M-f" . sp-forward-sexp)
+   ("C-M-b" . sp-backward-sexp)
+   ("C-M-n" . sp-next-sexp)
+   ("C-M-p" . sp-previous-sexp))
   :config
   (smartparens-global-mode)
   (require 'smartparens-ruby))
@@ -193,8 +203,13 @@
   :config
   (setq css-indent-offset 2))
 
+(use-package rainbow-delimiters
+  :ensure t)
+
 (use-package clojure-mode
   :ensure t
+  :config
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
   :mode "\\.clj\\'")
 
 (use-package cider
@@ -270,7 +285,7 @@
   :ensure t
   :config
   (progn
-    (windmove-default-keybindings)
+    (windmove-default-keybindings 'super)
     (setq windmove-wrap-around t)))
 
 ;; (use-package framemove
@@ -366,6 +381,9 @@
   (progn
     (add-hook 'ruby-mode-hook 'robe-mode)))
 
+(use-package blacken
+  :ensure t)
+
 (use-package flycheck
   :ensure t
   :diminish ""
@@ -429,12 +447,15 @@
 (use-package tide
   :ensure t
   :diminish t
+  :bind
+  (("C-c r" . tide-references)
+   ("C-c C-i" . tide-organize-imports))
   :init
   (defun setup-tide-mode ()
     (interactive)
     (tide-setup)
     (flycheck-mode +1)
-    (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
+    (flycheck-add-next-checker 'typescript-tide '(t . javascript-eslint) 'append)
     (setq flycheck-check-syntax-automatically '(save mode-enabled))
     (eldoc-mode +1)
     (tide-hl-identifier-mode +1)
@@ -443,8 +464,22 @@
     ;; `M-x package-install [ret] company`
     (company-mode +1)
     ;; aligns annotation to the right hand side
+    ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+    ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
     (setq company-tooltip-align-annotations t)))
 (flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;; (defun use-eslint-from-node-modules ()
+;;   (let* ((root (locate-dominating-file
+;;                 (or (buffer-file-name) default-directory)
+;;                 "node_modules"))
+;;          (eslint (and root
+;;                       (expand-file-name "node_modules/eslint/bin/eslint.js"
+;;                                         root))))
+;;     (when (and eslint (file-executable-p eslint))
+;;       (setq-local flycheck-javascript-eslint-executable eslint))))
+;; (add-hook 'flycheck-mode-hook #'use-eslint-from-node-modules)
+
 
 (use-package typescript-mode
   :ensure t
@@ -454,6 +489,18 @@
   (setq company-tooltip-align-annotations t
         typescript-indent-level 2)
   (add-hook 'typescript-mode-hook #'setup-tide-mode))
+
+(use-package add-node-modules-path
+  :ensure t
+  :config
+  (add-node-modules-path)
+  :hook (js2-mode typescript-mode))
+
+(use-package prettier-js
+  :ensure t
+  :bind
+  ("C-c C-p" . prettier-js)
+  :init (add-hook 'js2-mode-hook 'prettier-js-mode))
 
 (use-package json-mode
   :ensure t
@@ -523,12 +570,12 @@
   (("M-w" . easy-kill)
    ("M-W" . easy-mark)))
 
-(use-package ggtags
-  :ensure t
-  :bind*
-  (("M-." . ggtags-find-tag-dwim))
-  :config
-  (setq gtags-path-style 'relative))
+;; (use-package ggtags
+;;   :ensure t
+;;   :bind*
+;;   (("M-." . ggtags-find-tag-dwim))
+;;   :config
+;;   (setq gtags-path-style 'relative))
 
 (use-package org
   ;; :ensure org-plus-contrib
@@ -537,10 +584,10 @@
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
    ("C-c c" . org-capture)
-   ("C-c b" . org-iswitchb))
+   ("C-c b" . org-switchb))
   :config
   (progn
-    (setq org-archive-location (concat "~/.org/archive/" (format-time-string "%Y") ".org::* " (format-time-string "%B")))
+    (setq org-archive-location (concat "~/.org/wp/archive/" (format-time-string "%Y") ".org::* " (format-time-string "%B")))
     (setq org-pretty-entities t)
     (setq org-log-done t)
     (setq org-agenda-files (file-expand-wildcards "~/.org/wp/*.org"))
@@ -553,7 +600,7 @@
 
 (use-package org-bullets
   :ensure t
-  :init (add-hook 'org-mode-hook 'org-bullets-mode))
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq org-ellipsis "…")
 
@@ -576,11 +623,6 @@
     (setq TeX-parse-self t)
     (setq-default TeX-master nil)))
 
-(use-package prettier-js
-  :ensure t
-  :bind
-  ("C-c C-p" . prettier-js))
-
 (use-package feature-mode
   :ensure t
   :mode "\\.feature\\'")
@@ -588,6 +630,20 @@
 (use-package dockerfile-mode
   :ensure t
   :mode "Dockerfile\\'")
+
+(use-package elfeed
+  :ensure t)
+
+(use-package elfeed-org
+  :ensure t
+  :after (elfeed)
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/.org/wp/elfeed.org")))
+
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

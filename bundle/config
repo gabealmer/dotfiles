@@ -1,10 +1,11 @@
 ---
 BUNDLE_PATH: "bundle"
 BUNDLE_BIN: "bundle/bin"
-BUNDLE_JOBS: '4'
-BUNDLE_DISABLE_SHARED_GEMS: '1'
-BUNDLE_GEM__COC: 'false'
-BUNDLE_GEM__MIT: 'false'
-BUNDLE_GEM__TEST: 'false'
+BUNDLE_JOBS: "4"
+BUNDLE_DISABLE_SHARED_GEMS: "1"
+BUNDLE_GEM__COC: "false"
+BUNDLE_GEM__MIT: "false"
+BUNDLE_GEM__TEST: "false"
 BUNDLE_BUILD__NIO4R: "--with-cflags='-std=c99'"
 BUNDLE_BUILD__LIBV8: "--with-cxx=/usr/local/bin/g++-4.2"
+BUNDLE_BUILD__LIBXML-RUBY: "--with-xml2-config=/usr/local/opt/libxml2/bin/xml2-config"
